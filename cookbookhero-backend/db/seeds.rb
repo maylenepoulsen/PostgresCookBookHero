@@ -11,7 +11,7 @@ Recipe.delete_all
 Ingredient.delete_all
 Note.delete_all
 RecipeIngredient.delete_all
-#in console rails db:purge 
+# in console rails db:purge 
 # rails dbconsole
 
 maylene = User.create(name: 'Maylene')
@@ -19,3 +19,4 @@ pie = Recipe.create(name: 'pie', user: maylene)
 Tag.create(name: 'dessert')
 
 Ingredient.create(name: 'strawberries')
+Ingredient.create(name: 'sugar')
