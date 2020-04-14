@@ -5,18 +5,15 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def login
-    puts "In login"
     new_user = User.find_by(username: params[:username])
     if new_user == nil
-      render json: {message: "Username already taken"}
+      render json: {message: "Unknown username"}
     else
       render json: new_user, serialize: Api::V1::UserSerializer
     end
   end
 
   def signup
-    puts "In signup"
-    # byebug
     new_user = User.find_by(username: params[:username])
     if new_user == nil
       User.create(name: params[:name], username: params[:username])
