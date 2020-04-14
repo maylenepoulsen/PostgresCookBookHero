@@ -28,7 +28,7 @@ class NewRecipe extends Component {
 
     const listIngredient = {
       unit: newAmount,
-      ingredient: newIngredient
+      name: newIngredient
     } 
 
     this.setState({
