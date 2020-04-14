@@ -14,9 +14,17 @@ class Login extends Component {
   handleSubmit = event => {
       event.preventDefault();
       if(this.state.username) {
-          fetch('http://localhost:3001/api/v1/users/username')
+          fetch('http://localhost:3001/api/v1/users', {
+              method: "GET",
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+              },
+              body: JSON.stringify({ username: this.state.username })
+          })
           .then(response => response.json())
-
+          .then(result => console.log(result))
+          
       }
   }
 
