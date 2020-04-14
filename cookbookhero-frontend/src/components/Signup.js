@@ -15,7 +15,7 @@ class Signup extends Component {
   handleSubmit = event => {
     event.preventDefault();
     if(this.state.name && this.state.username) {
-      fetch('http://localhost:3001/api/v1/users', {
+      fetch('http://localhost:3001/api/v1/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

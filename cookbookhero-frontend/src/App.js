@@ -8,6 +8,7 @@ import NewRecipe from './components/NewRecipe';
 import Signup from './components/Signup'
 import Login from './components/Login'
 import Recipes from './components/Recipes'
+import RecipeShow from './components/RecipeShow'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route exact path='/' component={HomePage} />
       <Route path='/users' component={UserHomePage} />
       <Route path='/new-recipe' component={NewRecipe} />
+      <Route exact path='/recipe' component={RecipeShow} />
       <Route path='/recipes' component={Recipes} />
       <Route path='/sign-up' component={Signup} />
       <Route path='/login' component={Login} />

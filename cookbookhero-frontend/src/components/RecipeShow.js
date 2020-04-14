@@ -1,18 +1,20 @@
 import React, { Component } from "react";
-import SideBar from "./SideBar";
 import UserNavBar from "./UserNavBar";
+import SideBar from "./SideBar";
+import RecipeCard from './RecipeCard';
 
-class Recipes extends Component {
+class RecipeShow extends Component {
   render() {
     return (
       <div>
         <UserNavBar />
         <SideBar />
-
-        <h2 style={{ textAlign: "center" }}>A List of all the Recipes</h2>
+        <div>
+          <RecipeCard />
+        </div>
       </div>
     );
   }
 }
 
-export default Recipes;
+export default RecipeShow;
