@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :recipes, only: [:create, :index]
       resources :users, only: [:create, :index]
+
+      post "login", to: "users#login"
+      post "signup", to: "users#signup"
     end
   end
 end
