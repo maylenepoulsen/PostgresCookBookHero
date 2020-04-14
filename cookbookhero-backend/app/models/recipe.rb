@@ -6,18 +6,15 @@ class Recipe < ApplicationRecord
   has_many :notes
 
   def add_ingredient(ingredient)
-    new_ingredient = Ingredient.find_by(name: ingredient[:name])
+    new_ingredient = Ingredient.find_by(name: ingredient[:name].singularize)
     if new_ingredient == nil
-      new_ingredient = Ingredient.create(name: ingredient[:name])
+      new_ingredient = Ingredient.create(name: ingredient[:name].singularize)
     end
     
     RecipeIngredient.create(recipe: self, ingredient: new_ingredient, unit: ingredient[:unit])
   end
 
   def add_ingredients(ingredients_array)
-    
-    puts "in add_ingredients\n\n\n\n\n\n\n\n\n\n"
-    puts ingredients_array
     ingredients_array.each{ |i| add_ingredient(i) }
     nil
   end

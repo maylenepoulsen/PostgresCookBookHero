@@ -5,11 +5,11 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def login
-    new_user = User.find_by(username: params[:username])
-    if new_user == nil
+    user = User.find_by(username: params[:username])
+    if user == nil
       render json: {message: "Unknown username"}
     else
-      render json: new_user, serialize: Api::V1::UserSerializer
+      render json: user, serialize: Api::V1::UserSerializer
     end
   end
 
@@ -28,5 +28,11 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
+    user = User.find_by(username: params[:username])
+    if user == nil
+      render json: {message: "User does not exist"}
+    else
+      render json: user, serialize: Api::V1::UserSerializer
+    end
   end
-end
+end #EOF
