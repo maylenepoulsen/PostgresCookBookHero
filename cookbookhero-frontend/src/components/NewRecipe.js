@@ -11,7 +11,6 @@ class NewRecipe extends Component {
     ingredient: "",
     ingredients: [],
     unit: "",
-    units: [],
     tag: "",
     tags: [],
     ingredientList: [],
@@ -27,11 +26,16 @@ class NewRecipe extends Component {
     event.preventDefault();
     const newAmount = this.state.unit;
     const newIngredient = this.state.ingredient;
-    const listIngredient = newAmount.concat(" ", newIngredient);
+
+    const listIngredient = {
+      unit: newAmount,
+      ingredient: newIngredient
+    } 
+
+    //const listIngredient = newAmount.concat(" ", newIngredient);
 
     this.setState({
-      ingredients: [...this.state.ingredients, newIngredient],
-      units: [...this.state.units, newAmount],
+      ingredients: [...this.state.ingredients, listIngredient],
       ingredientList: [...this.state.ingredientList, listIngredient],
       ingredient: "",
       unit: "",
@@ -53,6 +57,29 @@ class NewRecipe extends Component {
       tag: "",
     });
   };
+
+  handleSave = () => {
+    const newRecipe = {
+      name: this.state.title,
+      history: this.state.history,
+      description: this.state.description,
+      ingredients: this.state.ingredients,
+      tags: this.state.tags
+    }
+
+    fetch('http://localhost:3001/api/v1/recipes', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application-json',
+        'Accept': 'application-/json'
+      },
+      body: JSON.stringify(newRecipe)
+    })
+  }
+
+  handleCancel = () => {
+    this.props.history.push('/users')
+  }
 
   render() {
     return (
@@ -153,8 +180,8 @@ class NewRecipe extends Component {
             <input type="file" onChange={this.handleImageUpload} />
           </label>
         </div>
-        <button>Cancel</button>
-        <button className="save-recipe">Save Recipe</button>
+        <button onClick={this.handleCancel}>Cancel</button>
+        <button onClick={this.handleSave} className="save-recipe">Save Recipe</button>
       </div>
     );
   }
