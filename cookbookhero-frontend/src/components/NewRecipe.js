@@ -61,6 +61,7 @@ class NewRecipe extends Component {
       directions: this.state.directions,
       ingredients: this.state.ingredients,
       tags: this.state.tags,
+      notes: this.state.notes,
       userId: 5
     }
     
