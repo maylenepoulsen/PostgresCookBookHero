@@ -66,7 +66,7 @@ class NewRecipe extends Component {
     fetch('http://localhost:3001/api/v1/recipes', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application-json',
+        'Content-Type': 'application/json',
         'Accept': 'application-/json'
       },
       body: JSON.stringify(newRecipe)
