@@ -15,7 +15,8 @@ class Api::V1::RecipesController < ApplicationController
       history = params[:history]
       notes = params[:notes]
       directions = params[:directions]
-      new_recipe = Recipe.new(user_id: user_id, name: name, history: history, notes: notes)
+      new_recipe = Recipe.new(user_id: user_id, name: name, history: history, description: directions)
+      new_recipe.notes << Note.create(information: notes, recipe: new_recipe)
       # directions = self.params.directions
       # create ingredients which need to be created
       # associate ingredients

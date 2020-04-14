@@ -56,13 +56,14 @@ class NewRecipe extends Component {
 
   handleSave = () => {
     const newRecipe = {
-      user_id: '4',
+      user_id: 1,
       name: this.state.title,
       history: this.state.history,
       directions: this.state.directions,
+      notes: this.state.notes,
       ingredients: this.state.ingredients,
       tags: this.state.tags,
-      userId: 5
+      // userId: 5
     }
     
     console.log("sending recipe", newRecipe)

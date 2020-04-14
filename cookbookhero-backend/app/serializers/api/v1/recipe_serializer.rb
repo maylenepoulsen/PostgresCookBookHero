@@ -1,5 +1,5 @@
 class Api::V1::RecipeSerializer < ActiveModel::Serializer
-    attributes :id, :name, :ingredients, :user, :tags, :directions
+    attributes :id, :name, :ingredients, :user, :tags, :directions, :notes
     def ingredients
         self.object.recipe_ingredients.map do |ri|
             {
@@ -21,5 +21,8 @@ class Api::V1::RecipeSerializer < ActiveModel::Serializer
     end
     def directions
         self.object.description
+    end
+    def notes
+        self.object.notes.map {|note| note.information}
     end
 end
