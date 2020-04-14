@@ -1,8 +1,8 @@
 class Api::V1::UsersController < ApplicationController
-  def create
+  # def create
 
-    render json: params
-  end
+  #   render json: params
+  # end
 
   def login
     user = User.find_by(username: params[:username])
@@ -28,7 +28,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    user = User.find_by(username: params[:username])
+    user = User.find_by(id: params[:id])
     if user == nil
       render json: {message: "User does not exist"}
     else

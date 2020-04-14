@@ -34,7 +34,12 @@ class Api::V1::RecipesController < ApplicationController
     end
   
     def show
-        render json: Recipe.find_by(username: params[:username])
+      recipe = Recipe.find_by(id: params[:id])
+      if recipe == nil
+        render json: {message: "Recipe not found"}
+      else
+        render json: recipe, serialize: Api::V1::RecipeSerializer
+      end
     end
 
     private
