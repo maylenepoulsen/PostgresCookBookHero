@@ -9,8 +9,8 @@ class UserHomePage extends Component {
               <UserNavBar />
               <SideBar />
              
-              <h3>Sort Dropdown</h3>
-              <h1>User Display</h1>
+              <h3 style={{textAlign: 'center'}}>Sort Dropdown</h3>
+              <h1 style={{textAlign: 'center'}}>User Display</h1>
           </div>
       )
   }

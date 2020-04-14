@@ -3,7 +3,11 @@
   top: 50%;
   left: 50%;
 
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
+}
+
+.site-title {
+  text-align: center;
 }
 
 .new-recipe-title {
@@ -16,12 +20,39 @@
   margin-right: 10px;
 }
 
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(183, 182, 184);
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 310px;
+  transition: 0.3s;
+  border-radius: 5px;
+  margin: auto;
+  
+  border: 3px solid black;
+  padding: 10px;
+  text-align: center;
+  font-family: arial;
+}
+
+.container {
+  padding: 2px 16px;
+}
+
 
 .App {
   text-align: center;
 }
-
-
 
 .App-header {
   background-color: #282c34;
@@ -33,6 +64,3 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-
-

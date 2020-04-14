@@ -59,10 +59,12 @@ class NewRecipe extends Component {
       user_id: '4',
       name: this.state.title,
       history: this.state.history,
-      description: this.state.description,
+      directions: this.state.directions,
       ingredients: this.state.ingredients,
-      tags: this.state.tags
+      tags: this.state.tags,
+      userId: 5
     }
+    
     console.log("sending recipe", newRecipe)
     fetch('http://localhost:3001/api/v1/recipes', {
       method: 'POST',
