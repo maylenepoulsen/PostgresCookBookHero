@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   def create
+    render json: params
   end
 
   def index
