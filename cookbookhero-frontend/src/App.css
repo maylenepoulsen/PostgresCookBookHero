@@ -6,6 +6,10 @@
   transform: translate(-50%, -50%)
 }
 
+.site-title {
+  text-align: center;
+}
+
 .new-recipe-title {
   text-align: center;
 }
