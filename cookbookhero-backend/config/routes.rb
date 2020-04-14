@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :recipes, only: [:create, :index, :show]
-      resources :users, only: [:create, :index, :show]
+      resources :users, only: [:index, :show]
       resources :ingredients, only: [:index]
 
       post "login", to: "users#login"
