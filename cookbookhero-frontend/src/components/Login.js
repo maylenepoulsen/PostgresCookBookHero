@@ -15,7 +15,7 @@ class Login extends Component {
       event.preventDefault();
       if(this.state.username) {
           fetch('http://localhost:3001/api/v1/users', {
-              method: "GET",
+              method: "POST",
               headers: {
                   'Content-Type': 'application/json',
                   'Accept': 'application/json'
