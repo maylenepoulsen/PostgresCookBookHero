@@ -13,7 +13,6 @@ class NewRecipe extends Component {
     unit: "",
     tag: "",
     tags: [],
-    ingredientList: [],
   };
 
   handleChange = (event) => {
@@ -32,11 +31,8 @@ class NewRecipe extends Component {
       ingredient: newIngredient
     } 
 
-    //const listIngredient = newAmount.concat(" ", newIngredient);
-
     this.setState({
       ingredients: [...this.state.ingredients, listIngredient],
-      ingredientList: [...this.state.ingredientList, listIngredient],
       ingredient: "",
       unit: "",
     });
@@ -113,8 +109,8 @@ class NewRecipe extends Component {
           </span>
           <div>
             <ul>
-              {this.state.ingredientList.map((ingredient, idx) => (
-                <li key={idx}>{ingredient}</li>
+              {this.state.ingredients.map((ingredient, idx) => (
+                <li key={idx}>{ingredient.unit.concat(" ", ingredient.ingredient)}</li>
               ))}
             </ul>
             <span>
