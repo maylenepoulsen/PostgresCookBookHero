@@ -14,8 +14,8 @@ class Login extends Component {
   handleSubmit = event => {
       event.preventDefault();
       if(this.state.username) {
-          fetch('http://localhost:3001/api/v1/users', {
-              method: "GET",
+          fetch('http://localhost:3001/api/v1/login', {
+              method: "POST",
               headers: {
                   'Content-Type': 'application/json',
                   'Accept': 'application/json'

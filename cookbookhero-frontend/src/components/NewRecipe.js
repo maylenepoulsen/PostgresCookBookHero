@@ -28,7 +28,7 @@ class NewRecipe extends Component {
 
     const listIngredient = {
       unit: newAmount,
-      ingredient: newIngredient
+      name: newIngredient
     } 
 
     this.setState({
@@ -56,12 +56,16 @@ class NewRecipe extends Component {
 
   handleSave = () => {
     const newRecipe = {
+      user_id: 1,
       name: this.state.title,
       history: this.state.history,
-      description: this.state.description,
+      directions: this.state.directions,
+      notes: this.state.notes,
       ingredients: this.state.ingredients,
-      tags: this.state.tags
+      tags: this.state.tags,
+      // userId: 5
     }
+    
     console.log("sending recipe", newRecipe)
     fetch('http://localhost:3001/api/v1/recipes', {
       method: 'POST',
@@ -110,7 +114,7 @@ class NewRecipe extends Component {
           <div>
             <ul>
               {this.state.ingredients.map((ingredient, idx) => (
-                <li key={idx}>{ingredient.unit.concat(" ", ingredient.ingredient)}</li>
+                <li key={idx}>{ingredient.unit.concat(" ", ingredient.name)}</li>
               ))}
             </ul>
             <span>
