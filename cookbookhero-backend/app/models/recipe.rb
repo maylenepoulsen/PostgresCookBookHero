@@ -6,9 +6,9 @@ class Recipe < ApplicationRecord
   has_many :notes
 
   def add_ingredient(ingredient)
-    new_ingredient = Ingredient.find_by(name: ingredient[:name].singularize)
+    new_ingredient = Ingredient.find_by(name: ingredient[:name].singularize.downcase)
     if new_ingredient == nil
-      new_ingredient = Ingredient.create(name: ingredient[:name].singularize)
+      new_ingredient = Ingredient.create(name: ingredient[:name].singularize.downcase)
     end
     
     RecipeIngredient.create(recipe: self, ingredient: new_ingredient, unit: ingredient[:unit])
@@ -20,9 +20,9 @@ class Recipe < ApplicationRecord
   end
 
   def add_tag(tag)
-    new_tag = Tag.find_by(name: tag)
+    new_tag = Tag.find_by(name: tag.downcase)
     if new_tag == nil
-      new_tag = Tag.create(name: tag)
+      new_tag = Tag.create(name: tag.downcase)
     end
     
     self.tags << new_tag
