@@ -10,10 +10,12 @@ class Api::V1::RecipesController < ApplicationController
       #   notes: string
       #   
       # 
-      # user_id = self.params.user_id
+      user_id = params[:user_id]
       name = params[:name]
       history = params[:history]
-      new_recipe = Recipe.new(name: name, history: history)
+      notes = params[:notes]
+      directions = params[:directions]
+      new_recipe = Recipe.new(user_id: user_id, name: name, history: history, notes: notes)
       # directions = self.params.directions
       # create ingredients which need to be created
       # associate ingredients
@@ -37,8 +39,8 @@ class Api::V1::RecipesController < ApplicationController
 
     private
     
-    def recipe_params(params)
-      
-    end
+    # def recipe_params(params)
+    #   params.require(:recipe).permit(:ingredients,:tags)
+    # end
   end
   

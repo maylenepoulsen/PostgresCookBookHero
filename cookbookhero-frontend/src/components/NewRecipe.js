@@ -56,6 +56,7 @@ class NewRecipe extends Component {
 
   handleSave = () => {
     const newRecipe = {
+      user_id: '4',
       name: this.state.title,
       history: this.state.history,
       description: this.state.description,
@@ -110,7 +111,7 @@ class NewRecipe extends Component {
           <div>
             <ul>
               {this.state.ingredients.map((ingredient, idx) => (
-                <li key={idx}>{ingredient.unit.concat(" ", ingredient.ingredient)}</li>
+                <li key={idx}>{ingredient.unit.concat(" ", ingredient.name)}</li>
               ))}
             </ul>
             <span>

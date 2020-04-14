@@ -15,6 +15,9 @@ class Recipe < ApplicationRecord
   end
 
   def add_ingredients(ingredients_array)
+    
+    puts "in add_ingredients\n\n\n\n\n\n\n\n\n\n"
+    puts ingredients_array
     ingredients_array.each{ |i| add_ingredient(i) }
     nil
   end
@@ -30,7 +33,7 @@ class Recipe < ApplicationRecord
   end
   
   def add_tags(tags)
-    ingredients_array.map{ |i| add_tag(i) }
+    tags.map{ |i| add_tag(i) }
     nil
   end
 end
