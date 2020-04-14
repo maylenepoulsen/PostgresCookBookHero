@@ -5,17 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.delete_all
-Tag.delete_all
-Recipe.delete_all 
-Ingredient.delete_all
-Note.delete_all
-RecipeIngredient.delete_all
-#in console rails db:purge 
+User.destroy_all
+Tag.destroy_all
+Recipe.destroy_all 
+Ingredient.destroy_all
+Note.destroy_all
+RecipeIngredient.destroy_all
+# in console rails db:purge 
 # rails dbconsole
 
 maylene = User.create(name: 'Maylene')
 pie = Recipe.create(name: 'pie', user: maylene)
 Tag.create(name: 'dessert')
 
-Ingredient.create(name: 'strawberries')
+straw = Ingredient.create(name: 'strawberries')
+sugar = Ingredient.create(name: 'sugar')
+
+RecipeIngredient.create(recipe: pie, ingredient: straw, quantity: 2, unit: 'lbs')
+RecipeIngredient.create(recipe: pie, ingredient: sugar, quantity: 2, unit: 'cups')
