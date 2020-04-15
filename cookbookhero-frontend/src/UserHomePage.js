@@ -15,6 +15,16 @@ class UserHomePage extends Component {
     this.setState({
       userId: this.props.match.params.id,
     });
+    fetch(`http://3001/api/v1/users/${this.props.match.params.id}/recipes`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }, 
+      body: JSON.stringify({})
+    })
+    .then(response => response.json())
+    .then(result => console.log(result))
   }
 
   changeStateRecipe = () => {
@@ -24,7 +34,7 @@ class UserHomePage extends Component {
   render() {
     return (
       <div>
-        <UserNavBar changeStateRecipe={this.changeStateRecipe} />
+        <UserNavBar changeStateRecipe={this.changeStateRecipe} userId={this.state.userId}/>
         {this.state.newRecipe ? (
           <NewRecipe userId={this.state.userId}/>
         ) : (
