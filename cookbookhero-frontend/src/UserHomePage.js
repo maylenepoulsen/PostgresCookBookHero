@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import UserNavBar from "./components/UserNavBar";
 import RecipeList from "./components/RecipeList";
 import NewRecipe from "./components/NewRecipe";
@@ -28,6 +29,10 @@ class UserHomePage extends Component {
     this.setState({ newRecipe: true });
   };
 
+  showRecipe = recipeId => {
+    this.props.history.push(`/recipe/${recipeId}`)
+  }
+
   render() {
     return (
       <div>
@@ -43,8 +48,8 @@ class UserHomePage extends Component {
             <div>
               <Tags recipes={this.state.recipes}/>
             </div>
-            <div style={{ textAlign: "center" }}>
-              <RecipeList recipes={this.state.recipes} userId={this.state.userId}/>
+            <div style={{ position: 'relative', left:'250px'}}>
+              <RecipeList recipes={this.state.recipes} userId={this.state.userId} showRecipe={this.showRecipe}/>
             </div>
             <div style={{position: 'relative', left: '350px', top: '-100px'}}>
               <RecipeCard />

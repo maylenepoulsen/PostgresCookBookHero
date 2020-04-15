@@ -1,17 +1,20 @@
-import React, {Component} from 'react'
+import React, { Component } from "react";
 
 class RecipeList extends Component {
-  componentDidMount() {
-    fetch('')
-  }
+  handleClick = (event) => {
+    this.props.showRecipe(event.target.id);
+  };
 
   render() {
-    console.log(this.props.recipes)
-      return(
-          <div>
-            {this.props.recipes.map(recipe => <p key={recipe.id}>{recipe.name}</p>)}
-          </div>
-      )
+    return (
+      <div>
+        {this.props.recipes.map((recipe) => (
+          <p key={recipe.id} id={recipe.id} onClick={this.handleClick}>
+            {recipe.name}
+          </p>
+        ))}
+      </div>
+    );
   }
 }
 
