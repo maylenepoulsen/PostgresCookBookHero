@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import UserNavBar from "./UserNavBar";
 import "../App.css";
 
 class NewRecipe extends Component {
@@ -56,17 +55,27 @@ class NewRecipe extends Component {
 
   handleSave = () => {
     const newRecipe = {
-      user_id: 1,
+      user_id: this.props.userId,
       name: this.state.title,
       history: this.state.history,
       directions: this.state.directions,
       notes: this.state.notes,
       ingredients: this.state.ingredients,
       tags: this.state.tags,
-      // userId: 5
     }
+
+    this.setState({
+      title: '',
+      history: "",
+      directions: "",
+      notes: "",
+      ingredient: "",
+      ingredients: [],
+      unit: "",
+      tag: "",
+      tags: [],
+    })
     
-    console.log("sending recipe", newRecipe)
     fetch('http://localhost:3001/api/v1/recipes', {
       method: 'POST',
       headers: {
@@ -84,7 +93,6 @@ class NewRecipe extends Component {
   render() {
     return (
       <div>
-        <UserNavBar />
         <h2 className="new-recipe-title">Add a New Recipe</h2>
         <form>
           <span>

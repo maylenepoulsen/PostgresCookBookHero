@@ -49,9 +49,26 @@
   padding: 2px 16px;
 }
 
-
-.App {
+.button {
+  background-color: rgb(160, 160, 160);
+  border: none;
+  color: white;
+  padding: 10px 20px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.login-button {
+  background-color: #e7e7e7;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 .App-header {
