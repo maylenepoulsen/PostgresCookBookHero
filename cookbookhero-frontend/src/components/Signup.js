@@ -27,8 +27,8 @@ class Signup extends Component {
         }),
       })
         .then((response) => response.json())
-        .then((result) => console.log(result));
-      // this.props.history.push('/users')
+        .then((result) => this.props.history.push(`/users/${result.id}`));
+
     } else {
       alert("Both fields must be filled in.");
     }
@@ -36,14 +36,15 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
+      <div className='centered'>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>
-              Name:
+              <strong>Name:</strong>
               <input
                 onChange={this.handleChange}
                 type="text"
+                style={{ width: "400px", height: "30px", fontSize: "large" }}
                 name="name"
                 value={this.state.name}
               />
@@ -51,17 +52,18 @@ class Signup extends Component {
           </div>
           <div>
             <label>
-              Username:
+              <strong>Username:</strong>
               <input
                 onChange={this.handleChange}
                 type="text"
+                style={{ width: "400px", height: "30px", fontSize: "large" }}
                 name="username"
                 value={this.state.username}
               />
             </label>
           </div>
           <div>
-            <button type="submit">Sign-Up</button>
+            <button className='login-button' type="submit">Sign-Up</button>
           </div>
         </form>
       </div>
