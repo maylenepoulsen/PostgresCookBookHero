@@ -4,6 +4,15 @@ class Api::V1::UsersController < ApplicationController
   #   render json: params
   # end
 
+  def recipes
+    user = User.find(id: params[:id])
+    if user == nil
+      render json: {message: "User does not exist"}
+    else
+      render json: user.recipes, each_serializer: Api::V1::RecipeSerializer
+    end
+  end
+
   def login
     user = User.find_by(username: params[:username])
     if user == nil
