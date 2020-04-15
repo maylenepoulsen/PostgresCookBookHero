@@ -5,7 +5,7 @@ class Api::V1::UsersController < ApplicationController
   # end
 
   def recipes
-    user = User.find(id: params[:id])
+    user = User.find_by(id: params[:id])
     if user == nil
       render json: {message: "User does not exist"}
     else
