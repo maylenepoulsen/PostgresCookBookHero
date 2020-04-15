@@ -15,14 +15,9 @@ class UserHomePage extends Component {
     this.setState({
       userId: this.props.match.params.id,
     });
-    fetch(`http://3001/api/v1/users/${this.props.match.params.id}/recipes`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }, 
-      body: JSON.stringify({})
-    })
+   console.log(this.props.match.params.id)
+
+    fetch(`http://3001/api/v1/users/${this.props.match.params.id}/recipes`)
     .then(response => response.json())
     .then(result => console.log(result))
   }
