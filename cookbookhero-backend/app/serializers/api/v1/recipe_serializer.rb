@@ -3,6 +3,8 @@ class Api::V1::RecipeSerializer < ActiveModel::Serializer
     
     def ingredients
         self.object.recipe_ingredients.map do |ri|
+            count = ri.unit.to_i
+            console.log(count)
             {
                 name: ri.name,
                 # quantity: ri.quantity,
