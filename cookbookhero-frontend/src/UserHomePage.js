@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import UserNavBar from "./components/UserNavBar";
 import RecipeList from "./components/RecipeList";
 import NewRecipe from "./components/NewRecipe";
+import Tags from './components/Tags'
+import RecipeCard from './components/RecipeCard'
 
 class UserHomePage extends Component {
   state = {
     recipes: [],
-    tags: [],
     userId: null,
     newRecipe: false,
   };
@@ -15,12 +16,13 @@ class UserHomePage extends Component {
     this.setState({
       userId: this.props.match.params.id,
     });
-   console.log(this.props.match.params.id)
 
-    fetch(`http://3001/api/v1/users/${this.props.match.params.id}/recipes`)
+    fetch(`http://localhost:3001/api/v1/users/${this.props.match.params.id}/recipes`)
     .then(response => response.json())
-    .then(result => console.log(result))
+    .then(result => this.setState({recipes: result}))
   }
+
+ 
 
   changeStateRecipe = () => {
     this.setState({ newRecipe: true });
@@ -38,8 +40,16 @@ class UserHomePage extends Component {
               <h3>Sort Dropdown</h3>
               <h1 style={{ textAlign: "center" }}>User Display</h1>
             </div>
+            <div>
+              <Tags recipes={this.state.recipes}/>
+            </div>
             <div style={{ textAlign: "center" }}>
               <RecipeList recipes={this.state.recipes} userId={this.state.userId}/>
+            </div>
+            <div style={{position: 'relative', left: '350px', top: '-100px'}}>
+              <RecipeCard />
+              <br />
+              <RecipeCard />
             </div>
           </>
         )}

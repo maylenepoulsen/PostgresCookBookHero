@@ -31,7 +31,6 @@ class Login extends Component {
         .then((result) => {
           this.setState({recipes: result.recipes})
           this.renderUserPage(result);
-          console.log(result)
         });
     }
   };
