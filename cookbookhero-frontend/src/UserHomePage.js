@@ -34,7 +34,7 @@ class UserHomePage extends Component {
   };
 
   render() {
-    // console.log(this.state.recipes);
+
     return (
       <div>
         <UserNavBar
@@ -49,10 +49,10 @@ class UserHomePage extends Component {
               <h3>Sort Dropdown</h3>
               <h1 style={{ textAlign: "center" }}>User Display</h1>
             </div>
-            <div>
+            <div style={{position: 'relative', left: '30px', top: '200px'}}>
               <Tags recipes={this.state.recipes} />
             </div>
-            <div style={{ position: "relative", left: "250px" }}>
+            <div style={{ position: "relative", left: "300px", top: '-100px' }}>
               <RecipeList
                 recipes={this.state.recipes}
                 userId={this.state.userId}
@@ -66,9 +66,9 @@ class UserHomePage extends Component {
                 .map((recipe) => (
                   <div
                     key={recipe.id}
-                    style={{ position: "relative", left: "10px" }}
+                    style={{ position: "relative", left: "10px", top: '-150px' }}
                   >
-                    <RecipeCard key={recipe.id} recipe={recipe} />
+                    <RecipeCard key={recipe.id} recipe={recipe} showRecipe={this.showRecipe}/>
                     <br />
                   </div>
                 ))}

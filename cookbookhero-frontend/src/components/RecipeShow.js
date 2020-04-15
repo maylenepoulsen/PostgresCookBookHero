@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import UserNavBar from "./UserNavBar";
 import RecipeCard from './RecipeCard';
 import RecipeDirections from './RecipeDirections'
+import Note from './Note'
 
 class RecipeShow extends Component {
   state = {
@@ -21,9 +22,14 @@ class RecipeShow extends Component {
         <div style={{ position: 'relative', left:'-400px', top: '60px'}}>
           <RecipeCard recipe={this.state.recipe}/>
         </div>
-        <div style={{ position: 'relative', left:'650px', top: '-380px'}}>
+        <div style={{position: 'relative', left: '110px', top: '85px'}}>
+          <strong>Notes:</strong>
+          <Note recipe={this.state.recipe}/>
+        </div>
+        <div style={{ position: 'relative', left:'550px', top: '-450px'}}>
           <RecipeDirections recipe={this.state.recipe} />
         </div>
+       
       </div>
     );
     } else return <div></div>

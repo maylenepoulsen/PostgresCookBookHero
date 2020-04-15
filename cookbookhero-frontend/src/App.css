@@ -38,7 +38,7 @@
   transition: 0.3s;
   border-radius: 5px;
   margin: auto;
-  
+
   border: 3px solid black;
   padding: 10px;
   text-align: center;
@@ -69,6 +69,10 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+
+.tag {
+  background-color: #e7e7e7;
 }
 
 .App-header {
