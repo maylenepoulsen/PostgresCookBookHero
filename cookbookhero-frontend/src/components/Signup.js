@@ -12,30 +12,32 @@ class Signup extends Component {
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
-    if(this.state.name && this.state.username) {
-      fetch('http://localhost:3001/api/v1/signup', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json' 
-          },
-          body: JSON.stringify({
-              name: this.state.name,
-              username: this.state.username
-          })
-      })  
-      this.props.history.push('/users')
+    if (this.state.name && this.state.username) {
+      fetch("http://localhost:3001/api/v1/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: this.state.name,
+          username: this.state.username,
+        }),
+      })
+        .then((response) => response.json())
+        .then((result) => console.log(result));
+      // this.props.history.push('/users')
     } else {
-      alert("Both fields must be filled in.")
+      alert("Both fields must be filled in.");
     }
-  }
+  };
 
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit} >
+        <form onSubmit={this.handleSubmit}>
           <div>
             <label>
               Name:
@@ -59,8 +61,8 @@ class Signup extends Component {
             </label>
           </div>
           <div>
-          <button type="submit">Sign-Up</button>
-        </div>
+            <button type="submit">Sign-Up</button>
+          </div>
         </form>
       </div>
     );
