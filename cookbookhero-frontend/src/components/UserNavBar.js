@@ -18,7 +18,7 @@ class UserNavBar extends Component {
             <Link to="/recipes">All Recipes</Link>
           </li>
           <li style={{ display: "inline", float: "right", padding: "8px" }}>
-            <Link to="/users">My Recipes</Link>
+            <Link to='/users'>My Recipes</Link>
           </li>
           <li style={{ display: "inline", float: "right", padding: "8px" }}>
             <button onClick={this.handleClick} className="button">
