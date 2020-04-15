@@ -13,9 +13,9 @@ class RecipeShow extends Component {
     .then(result => this.setState({recipe: result}))
   }
   render() {
-    console.log(this.props.match.params.id)
-    
+    if (this.state.recipe) {
     return (
+  
       <div>
         <UserNavBar />
         <div style={{ position: 'relative', left:'-400px', top: '60px'}}>
@@ -26,6 +26,7 @@ class RecipeShow extends Component {
         </div>
       </div>
     );
+    } else return <div></div>
   }
 }
 

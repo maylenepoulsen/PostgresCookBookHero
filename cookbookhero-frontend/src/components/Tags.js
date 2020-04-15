@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 
 class Tags extends Component {
-  
   render() {
-    console.log("recipes", this.props.recipes);
+    //console.log("tags", this.props.recipes.tags);
+    if(this.props.recipe) {
     return (
       <div>
         Tags:
-        {/* {this.props.recipes.map((recipe) => {
-          recipe.tags.map((tag) => <p>{tag}</p>);
-        })} */}
+        {/* {this.props.recipes.tags.map((tag, idx) => (
+          <p key={idx}>{tag}</p>
+        ))} */}
       </div>
     );
+      } else return <div></div>
   }
 }
 

@@ -2,21 +2,22 @@ import React, { Component } from "react";
 
 class RecipeDirections extends Component {
   render() {
-      console.log('recipe-direction', this.props.recipe.ingredients)
     return (
       <div>
         <div>
           <h4>Ingredients:</h4>
           <div>
-            {/* <ul>
-              {this.props.recipe.ingredients.map((ingredient) => (
-                <li>{ingredient.unit}</li>
+            <ul>
+              {this.props.recipe.ingredients.map((ingredient, idx) => (
+                <li key={idx}>{ingredient.unit.concat(' ', ingredient.name)}</li>
               ))}
-            </ul> */}
+            </ul>
           </div>
         </div>
         <h4>Instructions:</h4>
+        <div>
         {this.props.recipe.directions}
+        </div>
       </div>
     );
   }
