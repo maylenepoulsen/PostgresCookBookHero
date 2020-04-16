@@ -9,20 +9,10 @@ import SortDropDown from "./components/SortDropDown";
 class UserHomePage extends Component {
   state = {
     newRecipe: false,
+    sortMethod: (a,b) => 1,
   };
 
-  // componentDidMount() {
-  //   fetch(
-  //     `http://localhost:3001/api/v1/users/${this.props.userId}/recipes`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((result) => {
-  //       this.setState({ recipes: result });
-  //     });
-  //   this.setState({
-  //     userId: this.props.match.params.id,
-  //   });
-  // }
+  
 
   changeStateRecipe = () => {
     this.setState({ newRecipe: true });
@@ -47,15 +37,15 @@ class UserHomePage extends Component {
             <div>
               <h1 className="all-recipes-title" style={{position: 'relative', left: '400px'}}>All Recipes</h1>
               <div style={{position: 'relative', left:'20px'}}>
-                <SortDropDown />
+                <SortDropDown getSortMethod={(sortMethod) => this.setState({sortMethod})} array={this.props.recipes}/>
               </div>
             </div>
             <div style={{ position: "relative", left: "30px", top: "200px" }}>
-              <Tags recipes={this.props.recipes} />
+              <Tags recipes={this.props.recipes.sort(this.state.sortMethod)} />
             </div>
             <div style={{ position: "relative", left: "300px", top: "-200px" }}>
               <RecipeList
-                recipes={this.props.recipes}
+                recipes={this.props.recipes.sort(this.state.sortMethod)}
                 userId={this.props.userId}
                 showRecipe={this.showRecipe}
               />

@@ -85,7 +85,7 @@ class App extends Component {
             />
           </Route>
           <Route path="/new-recipe">
-            <NewRecipe />
+            <NewRecipe userId={this.state.userId}/>
           </Route>
           <Route exact path="/recipe/:id">
             <RecipeShow />
