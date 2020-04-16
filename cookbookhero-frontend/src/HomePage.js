@@ -8,9 +8,9 @@ class HomePage extends Component {
       <div>
         <HomeNavBar />
         <div className='centered' >
-          <h1 className='site-title'>Cook Book Hero Title</h1>
+          <h1 className='site-title'>Cook Book Hero: All Your Recipes Saved</h1>
           <img
-            src="https://via.placeholder.com/550x375"
+            src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=150&w=252"
             alt="Cook Book Hero Recipe Organizer"
           />
         </div>

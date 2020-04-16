@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Login extends Component {
   state = {
     username: "",
-    recipes:[]
+    recipes: [],
   };
 
   handleChange = (event) => {
@@ -29,7 +29,7 @@ class Login extends Component {
       })
         .then((response) => response.json())
         .then((result) => {
-          this.setState({recipes: result.recipes})
+          this.setState({ recipes: result.recipes });
           this.renderUserPage(result);
         });
     }
@@ -41,7 +41,7 @@ class Login extends Component {
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>
-              Enter your Username:
+              <h3 className="site-title">Enter your Username</h3>
               <input
                 onChange={this.handleChange}
                 type="text"

@@ -4,6 +4,7 @@ import RecipeList from "./components/RecipeList";
 import NewRecipe from "./components/NewRecipe";
 import Tags from "./components/Tags";
 import RecipeCard from "./components/RecipeCard";
+import SortDropDown from "./components/SortDropDown";
 
 class UserHomePage extends Component {
   state = {
@@ -34,7 +35,6 @@ class UserHomePage extends Component {
   };
 
   render() {
-    // console.log(this.state.recipes);
     return (
       <div>
         <UserNavBar
@@ -46,13 +46,15 @@ class UserHomePage extends Component {
         ) : (
           <>
             <div>
-              <h3>Sort Dropdown</h3>
-              <h1 style={{ textAlign: "center" }}>User Display</h1>
+              <h1 className="all-recipes-title" style={{position: 'relative', left: '400px'}}>All Recipes</h1>
+              <div style={{position: 'relative', left:'20px'}}>
+                <SortDropDown />
+              </div>
             </div>
-            <div>
+            <div style={{ position: "relative", left: "30px", top: "200px" }}>
               <Tags recipes={this.state.recipes} />
             </div>
-            <div style={{ position: "relative", left: "250px" }}>
+            <div style={{ position: "relative", left: "300px", top: "-200px" }}>
               <RecipeList
                 recipes={this.state.recipes}
                 userId={this.state.userId}
@@ -66,9 +68,17 @@ class UserHomePage extends Component {
                 .map((recipe) => (
                   <div
                     key={recipe.id}
-                    style={{ position: "relative", left: "10px" }}
+                    style={{
+                      position: "relative",
+                      left: "10px",
+                      top: "-250px",
+                    }}
                   >
-                    <RecipeCard key={recipe.id} recipe={recipe} />
+                    <RecipeCard
+                      key={recipe.id}
+                      recipe={recipe}
+                      showRecipe={this.showRecipe}
+                    />
                     <br />
                   </div>
                 ))}
