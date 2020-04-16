@@ -2,18 +2,13 @@ import React, { Component } from "react";
 
 class Login extends Component {
   state = {
-    username: "",
-    recipes: [],
-  };
-
+    username: ''
+  }
+  
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
-  };
-
-  renderUserPage = (result) => {
-    this.props.history.push(`/users/${result.id}`);
   };
 
   handleSubmit = (event) => {
@@ -29,8 +24,8 @@ class Login extends Component {
       })
         .then((response) => response.json())
         .then((result) => {
-          this.setState({ recipes: result.recipes });
-          this.renderUserPage(result);
+         this.props.handleLogin(result.id)
+         
         });
     }
   };

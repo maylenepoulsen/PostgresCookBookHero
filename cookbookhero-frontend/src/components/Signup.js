@@ -27,7 +27,7 @@ class Signup extends Component {
         }),
       })
         .then((response) => response.json())
-        .then((result) => this.props.history.push(`/users/${result.id}`));
+        .then((result) => this.props.handleSignUp(result.id));
 
     } else {
       alert("Both fields must be filled in.");
