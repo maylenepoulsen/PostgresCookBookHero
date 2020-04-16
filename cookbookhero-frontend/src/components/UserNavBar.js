@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 import "../App.css";
 
 class UserNavBar extends Component {
-  handleClick = () => {
-    this.props.changeStateRecipe();
-  };
-
   handleLogOut = () => {
     console.log("logged out");
     this.props.logOutUser();
@@ -33,13 +29,11 @@ class UserNavBar extends Component {
           </li>
           <li style={{ display: "inline", float: "right", padding: "8px" }}>
             <Link to="/new-recipe">
-              <button onClick={this.handleClick} className="button">
-                Add A New Recipe
-              </button>
+              <button className="button">Add A New Recipe</button>
             </Link>
           </li>
           <li style={{ display: "inline" }}>
-            <img src="../test-hero.png" width={75} />
+            <img src="../test-hero.png" alt="super-hero-icon" width={75} />
           </li>
         </ul>
       </div>

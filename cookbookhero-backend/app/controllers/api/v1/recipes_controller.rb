@@ -34,6 +34,7 @@ class Api::V1::RecipesController < ApplicationController
     end
   
     def show
+      
       recipe = Recipe.find_by(id: params[:id])
       if recipe == nil
         render json: {message: "Recipe not found"}

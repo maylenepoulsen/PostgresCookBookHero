@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
+import { Link, Redirect } from 'react-router-dom';
+import UserNavBar from './UserNavBar';
 
 class NewRecipe extends Component {
   state = {
@@ -12,7 +14,11 @@ class NewRecipe extends Component {
     unit: "",
     tag: "",
     tags: [],
+    recipeId: null,
+    redirect: null
   };
+
+  
 
   handleChange = (event) => {
     this.setState({
@@ -75,7 +81,7 @@ class NewRecipe extends Component {
       tag: "",
       tags: [],
     })
-    
+
     fetch('http://localhost:3001/api/v1/recipes', {
       method: 'POST',
       headers: {
@@ -84,15 +90,26 @@ class NewRecipe extends Component {
       },
       body: JSON.stringify(newRecipe)
     })
-  }
-
-  handleCancel = () => {
-    this.props.history.push('/users')
+    .then(response => response.json())
+    .then(result => {
+      this.setState({
+        recipeId: result.id,
+        redirect: true
+      })
+      this.props.addANewRecipe(result.id)
+    })
   }
 
   render() {
+    if(this.state.redirect) {
+      return (
+        //this doesn't match the backend
+        <Redirect to={`/recipe/${this.state.recipeId}`} />
+      )
+    }
     return (
       <div>
+        <UserNavBar />
         <h2 className="new-recipe-title">Add a New Recipe</h2>
         <form>
           <span>
@@ -188,7 +205,7 @@ class NewRecipe extends Component {
             <input type="file" onChange={this.handleImageUpload} />
           </label>
         </div>
-        <button onClick={this.handleCancel}>Cancel</button>
+       <Link to={`/users/${this.props.userId}`}> <button>Cancel</button></Link>
         <button onClick={this.handleSave} className="save-recipe">Save Recipe</button>
       </div>
     );

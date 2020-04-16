@@ -3,7 +3,6 @@ import UserNavBar from "./UserNavBar";
 
 class Recipes extends Component {
   render() {
-    console.log(this.props.allRecipes)
     if(this.props.allRecipes) {
       return (
         <div>

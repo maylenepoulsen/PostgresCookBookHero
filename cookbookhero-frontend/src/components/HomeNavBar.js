@@ -7,7 +7,7 @@ class HomeNavBar extends Component {
       <div>
         <ul style={{ listStyleType: "none", margin: 10, padding: 10 }}>
           <li style={{ display: "inline" }}>
-            <img src="../test-hero.png" width={75} />
+            <img src="../test-hero.png" alt='super-hero-icon' width={75} />
           </li>
           <li style={{ display: "inline", float: "right", padding: "8px" }}>
             <Link to="/login">

@@ -16,6 +16,7 @@ class App extends Component {
     userId: null,
     recipes: [],
     allRecipes: [],
+    showRecipe: null
   };
 
   componentDidMount() {
@@ -52,6 +53,19 @@ class App extends Component {
     })
   }
 
+  addANewRecipe = recipeId => {
+    console.log(recipeId)
+    // this.setState({recipeToShow: recipeId})
+    fetch(`http://localhost:3001/api/v1/recipes/${recipeId}`)
+    .then(response => response.json())
+    .then(result => {
+      this.setState({showRecipe: result})
+      //console.log(this.state.showRecipe)
+    })
+    
+  } 
+
+
   render() {
     if (!this.state.loggedIn) {
       return (
@@ -82,13 +96,20 @@ class App extends Component {
               recipes={this.state.recipes}
               userId={this.state.userId}
               logOutUser={this.logOutUser}
+              addANewRecipe={this.addANewRecipe}
             />
           </Route>
           <Route path="/new-recipe">
-            <NewRecipe />
+            <NewRecipe userId={this.state.userId} 
+            recipes={this.state.recipes} 
+            logOutUser={this.logOutUser}
+            addANewRecipe={this.addANewRecipe}
+            />
           </Route>
           <Route exact path="/recipe/:id">
-            <RecipeShow />
+            <RecipeShow 
+            showRecipe={this.state.showRecipe}
+           />
           </Route>
           <Route path="/recipes" >
             <Recipes allRecipes={this.state.allRecipes}/>
@@ -99,6 +120,7 @@ class App extends Component {
                 recipes={this.state.recipes}
                 userId={this.state.userId}
                 logOutUser={this.logOutUser}
+                addANewRecipe={this.addANewRecipe}
               />
             </Redirect>
           </Route>

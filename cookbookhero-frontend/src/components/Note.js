@@ -5,9 +5,7 @@ class Note extends Component {
     console.log(this.props.recipe);
     return (
       <div className='note'>
-        {this.props.recipe.notes.map((note, idx) => (
-          <p key={idx}>{note}</p>
-        ))}
+        {this.props.recipe.notes.map((note, idx) => (<p key={idx}>{note}</p>))}
       </div>
     );
   }
