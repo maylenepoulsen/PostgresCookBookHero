@@ -8,6 +8,11 @@
 
 .site-title {
   text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.all-recipes-title {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .new-recipe-title {
@@ -45,6 +50,18 @@
   font-family: arial;
 }
 
+.instructions {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+  transition: 0.3s;
+  border-radius: 5px;
+  margin: auto;
+
+  border: 3px solid black;
+  padding: 30px;
+  font-family: arial;
+}
+
 .container {
   padding: 2px 16px;
 }
@@ -62,12 +79,19 @@
 
 .login-button {
   background-color: #e7e7e7;
-  border: none;
+  border: 2px solid black;
   color: black;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  font-size: 16px;
+}
+
+.home-button {
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+  padding: 14px 28px;
   font-size: 16px;
 }
 
@@ -75,13 +99,22 @@
   background-color: #e7e7e7;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.recipe-list {
+  line-height: 3;
+  list-style-type: square;
+}
+
+.ingredient-list {
+  line-height: 1.5;
+}
+
+.dropdown {
+  display: inline-block;
+  background-color: white;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  display: block;
 }

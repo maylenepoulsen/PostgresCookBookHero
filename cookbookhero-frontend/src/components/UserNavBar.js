@@ -29,6 +29,9 @@ class UserNavBar extends Component {
               Add A New Recipe
             </button>
           </li>
+          <li>
+          <li style={{ display: "inline" }}><img src="../test-hero.png" width={75}/></li>
+          </li>
         </ul>
       </div>
     );

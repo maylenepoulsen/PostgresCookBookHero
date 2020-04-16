@@ -26,7 +26,7 @@ class RecipeShow extends Component {
           <strong>Notes:</strong>
           <Note recipe={this.state.recipe}/>
         </div>
-        <div style={{ position: 'relative', left:'550px', top: '-450px'}}>
+        <div style={{ position: 'relative', left:'250px', top: '-450px'}}>
           <RecipeDirections recipe={this.state.recipe} />
         </div>
        

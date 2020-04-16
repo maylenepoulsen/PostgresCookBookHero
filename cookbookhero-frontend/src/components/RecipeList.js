@@ -8,11 +8,13 @@ class RecipeList extends Component {
   render() {
     return (
       <div>
+        <ul>
         {this.props.recipes.map((recipe) => (
-          <p key={recipe.id} id={recipe.id} onClick={this.handleClick}>
+          <li className='recipe-list' key={recipe.id} id={recipe.id} onClick={this.handleClick}>
             {recipe.name}
-          </p>
+          </li>
         ))}
+        </ul>
       </div>
     );
   }
