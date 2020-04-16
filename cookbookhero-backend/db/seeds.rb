@@ -29,7 +29,7 @@ RecipeIngredient.destroy_all
 maylene = User.create(name: 'Maylene', username: 'maylene')
 lugh = User.create(name: 'lugh', username: 'lugh')
 
-10.times do
+3.times do
     name = Faker::Name.unique.first_name
     User.create(name: name, username: name)
 end
