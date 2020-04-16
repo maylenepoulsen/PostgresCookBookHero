@@ -1,8 +1,9 @@
 class Api::V1::RecipeSerializer < ActiveModel::Serializer
-    attributes :id, :name, :ingredients, :user, :tags, :directions, :notes
+    attributes :id, :name, :ingredients, :user, :tags, :directions, :notes, :created_at
     
     def ingredients
         self.object.recipe_ingredients.map do |ri|
+            count = ri.unit.to_i
             {
                 name: ri.name,
                 # quantity: ri.quantity,
