@@ -55,6 +55,6 @@ end
             ing = Ingredient.all.sample
         end
         rec.tags << Tag.find_or_create_by(name: ing.name)
-        ri = RecipeIngredient.create(recipe: rec, ingredient: Ingredient.all.sample, unit: Faker::Food.measurement)
+        ri = RecipeIngredient.create(recipe: rec, ingredient: ing, unit: Faker::Food.measurement)
     end
 end
