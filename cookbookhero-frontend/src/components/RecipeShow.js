@@ -5,6 +5,19 @@ import RecipeDirections from "./RecipeDirections";
 import Note from "./Note";
 
 class RecipeShow extends Component {
+
+  handleClick = () => {
+    const recipeId = this.props.showRecipe.id
+    fetch(`http://localhost:3001/api/v1/recipes/${recipeId}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }   
+    }) 
+    this.props.deleteRecipe(recipeId) 
+  }
+
   render() {
    if(this.props.showRecipe) {
     return (
@@ -20,6 +33,7 @@ class RecipeShow extends Component {
         <div style={{ position: "relative", left: "250px", top: "-450px" }}>
           <RecipeDirections recipe={this.props.showRecipe} />
         </div>
+        <button onClick={this.handleClick}>Delete Recipe</button>
       </div>
     );
   } else return <div></div>

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 class RecipeDirections extends Component {
   render() {
-    console.log(this.props.recipe)
     return (
       <div className='instructions'>
         <div>
