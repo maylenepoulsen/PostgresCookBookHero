@@ -8,23 +8,21 @@ import SortDropDown from "./components/SortDropDown";
 
 class UserHomePage extends Component {
   state = {
-    recipes: [],
-    userId: null,
     newRecipe: false,
   };
 
-  componentDidMount() {
-    fetch(
-      `http://localhost:3001/api/v1/users/${this.props.match.params.id}/recipes`
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        this.setState({ recipes: result });
-      });
-    this.setState({
-      userId: this.props.match.params.id,
-    });
-  }
+  // componentDidMount() {
+  //   fetch(
+  //     `http://localhost:3001/api/v1/users/${this.props.userId}/recipes`
+  //   )
+  //     .then((response) => response.json())
+  //     .then((result) => {
+  //       this.setState({ recipes: result });
+  //     });
+  //   this.setState({
+  //     userId: this.props.match.params.id,
+  //   });
+  // }
 
   changeStateRecipe = () => {
     this.setState({ newRecipe: true });
@@ -39,7 +37,8 @@ class UserHomePage extends Component {
       <div>
         <UserNavBar
           changeStateRecipe={this.changeStateRecipe}
-          userId={this.state.userId}
+          userId={this.props.userId}
+          logOutUser={this.props.logOutUser}
         />
         {this.state.newRecipe ? (
           <NewRecipe userId={this.state.userId} />
@@ -52,17 +51,17 @@ class UserHomePage extends Component {
               </div>
             </div>
             <div style={{ position: "relative", left: "30px", top: "200px" }}>
-              <Tags recipes={this.state.recipes} />
+              <Tags recipes={this.props.recipes} />
             </div>
             <div style={{ position: "relative", left: "300px", top: "-200px" }}>
               <RecipeList
-                recipes={this.state.recipes}
-                userId={this.state.userId}
+                recipes={this.props.recipes}
+                userId={this.props.userId}
                 showRecipe={this.showRecipe}
               />
             </div>
             <div style={{ position: "relative", left: "350px", top: "-100px" }}>
-              {this.state.recipes
+              {this.props.recipes
                 .reverse()
                 .slice(0, 2)
                 .map((recipe) => (
