@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Tags extends Component {
   
   extractTags = () => {
-    const tags = this.props.recipes.map(recipe => recipe.tags).flat(1)
+    const tags = [...new Set(this.props.recipes.map(recipe => recipe.tags).flat(1))]
     return tags;
   }
 

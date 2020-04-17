@@ -6,7 +6,15 @@ import RecipeCard from "./components/RecipeCard";
 import SortDropDown from "./components/SortDropDown";
 
 class UserHomePage extends Component {
-  
+  state = {
+    sortedRecipes: null
+  }
+
+  handleSortedRecipes = recipeArray => {
+    this.setState({
+      sortedRecipes: recipeArray
+    })
+  }
 
 
   render() {
@@ -25,16 +33,20 @@ class UserHomePage extends Component {
             >
               All My Recipes
             </h1>
+            {/* {this.props.recipes > 2 ?  */}
             <div style={{ position: "relative", left: "20px" }}>
-              <SortDropDown recipes={this.props.recipes} />
+              <SortDropDown recipes={this.props.recipes} sortedRecipes={this.handleSortedRecipes} />
             </div>
+            {/* :
+            <div></div>
+             } */}
           </div>
           <div style={{ position: "absolute", left: "30px", top: "300px" }}>
             <Tags recipes={this.props.recipes} />
           </div>
           <div style={{ position: "absolute", left: "300px", top: "200px" }}>
             <RecipeList
-              recipes={this.props.recipes}
+              recipes={this.state.sortedRecipes || this.props.recipes}
               userId={this.props.userId}
               showRecipe={this.showRecipe}
               addANewRecipe={this.props.addANewRecipe}
@@ -66,6 +78,10 @@ class UserHomePage extends Component {
       </div>
     );
   }
+}
+
+UserHomePage.defaultProps = {
+  recipes: []
 }
 
 export default UserHomePage;

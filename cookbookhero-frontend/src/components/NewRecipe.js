@@ -45,7 +45,7 @@ class NewRecipe extends Component {
           recipeId: result.id,
           redirect: true
         })
-        this.props.addANewRecipe(result.id)
+        this.props.addRecipe(result.id)
       })
   }
 
@@ -179,7 +179,7 @@ class NewRecipe extends Component {
               </label>
             </span>
             <div style={{ paddingTop: '10px' }}>
-              <div style={{ position: 'absolute', left: '50px' }}>
+              <div style={{ position: 'relative', left: '50px' }}>
                 <ul>
                   {this.state.ingredients.map((ingredient, idx) => (
                     <li key={idx} style={{ lineHeight: '1.5' }}>{ingredient.unit.concat(" ", ingredient.name)}</li>
@@ -248,7 +248,7 @@ class NewRecipe extends Component {
             </div>
             <div>
               <br />
-              <label for="image" className='button'>
+              <label htmlFor="image" className='button'>
                 <h4>Upload an Image:</h4>
               </label>
                 <input

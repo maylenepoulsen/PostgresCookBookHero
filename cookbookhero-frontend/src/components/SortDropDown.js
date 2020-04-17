@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 const sorts = {
     'alphabetical' : (a,b) => a.name.localeCompare(b.name),
-    'newest' : (a,b) => new Date(a.created_at) - new Date(b.created_at),
-    'oldest' : (a,b) => new Date(b.created_at) - new Date(a.created_at),
+    'newest' : (a,b) => new Date(b.created_at) - new Date(a.created_at),
+    'oldest' : (a,b) => new Date(a.created_at) - new Date(b.created_at),
 }
 
 // t.created_at.strftime("%Y-%m-%d")
@@ -18,8 +18,10 @@ class SortDropDown extends Component {
         this.setState({
           value : event.target.value  
         })
-
-        this.props.getSortMethod(()=>this.props.array.sort(sorts[this.state.value]))
+        console.log("SortDropDown: recipes prop",this.props.recipes)
+        const recipeArray = [...this.props.recipes]
+        recipeArray.sort(sorts[event.target.value])
+        this.props.sortedRecipes(recipeArray)
     }
 
     // sortArray = () => {

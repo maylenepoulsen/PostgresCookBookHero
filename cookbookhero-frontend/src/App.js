@@ -57,9 +57,23 @@ class App extends Component {
     fetch(`http://localhost:3001/api/v1/recipes/${recipeId}`)
     .then(response => response.json())
     .then(result => {
-      this.setState({showRecipe: result})
+      this.setState({
+        showRecipe: result,
+      })
     }) 
-  } 
+  }
+  
+  addRecipe = recipeId => {
+    fetch(`http://localhost:3001/api/v1/recipes/${recipeId}`)
+    .then(response => response.json())
+    .then(result => {
+      this.setState({
+        showRecipe: result,
+        recipes: [...this.state.recipes, result]
+      })
+    })
+ 
+  }
 
   deleteRecipe = recipeId => {
     const newRecipeArray = this.state.recipes.filter(recipe => recipe.id !== recipeId)
@@ -104,7 +118,7 @@ class App extends Component {
             <NewRecipe userId={this.state.userId} 
             recipes={this.state.recipes} 
             logOutUser={this.logOutUser}
-            addANewRecipe={this.addANewRecipe}
+            addRecipe={this.addANewRecipe}
             />
           </Route>
           <Route exact path="/recipe/:id">
