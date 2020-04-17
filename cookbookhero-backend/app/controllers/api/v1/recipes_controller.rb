@@ -10,6 +10,7 @@ class Api::V1::RecipesController < ApplicationController
       #   notes: string
       #   
       # 
+      byebug
       user_id = params[:user_id]
       name = params[:name]
       history = params[:history]
@@ -20,12 +21,14 @@ class Api::V1::RecipesController < ApplicationController
       new_recipe.notes << Note.create(information: notes, recipe: new_recipe)
       # create ingredients which need to be created
       # associate ingredients
-      new_recipe.add_ingredients(params[:ingredients])
+      ingredients = JSON.parse(params[:ingredients])
+      new_recipe.add_ingredients(ingredients)
       # create tags which need to be created
       # associate tags
-      new_recipe.add_tags(params[:tags])
+      tags = JSON.parse(params[:tags])
+      new_recipe.add_tags(tags)
       # self.params
-      new_recipe.save
+      # new_recipe.save
       new_recipe.image.attach(params[:image])
       new_recipe.save
 

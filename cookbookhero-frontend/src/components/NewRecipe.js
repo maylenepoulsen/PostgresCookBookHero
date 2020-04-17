@@ -5,13 +5,13 @@ import UserNavBar from './UserNavBar';
 
 class NewRecipe extends Component {
   state = {
-    title: "",
+    name: "",
     history: "",
     directions: "",
     notes: "",
+    unit: "",
     ingredient: "",
     ingredients: [],
-    unit: "",
     tag: "",
     tags: [],
     image: null,
@@ -19,7 +19,35 @@ class NewRecipe extends Component {
     redirect: null
   };
 
-
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    formData.delete('unit')
+    formData.delete('ingredient')
+    formData.delete('tag')
+    formData.append('ingredients', JSON.stringify(this.state.ingredients))
+    formData.append('tags', JSON.stringify(this.state.tags))
+    formData.append('user_id', this.props.userId)
+    // for (let i of formData.entries())
+    //   console.log(i[0] + ", " + i[1])
+    fetch('http://localhost:3001/api/v1/recipes', {
+      method: 'POST',
+      headers: {
+        // 'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: formData
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result)
+        this.setState({
+          recipeId: result.id,
+          redirect: true
+        })
+        this.props.addANewRecipe(result.id)
+      })
+  }
 
   handleChange = (event) => {
     this.setState({
@@ -62,6 +90,7 @@ class NewRecipe extends Component {
 
   handleAddTag = (event) => {
     event.preventDefault();
+
     const newTag = this.state.tag;
     this.setState({
       tags: [...this.state.tags, newTag],
@@ -82,7 +111,7 @@ class NewRecipe extends Component {
     }
 
     this.setState({
-      title: '',
+      name: '',
       history: "",
       directions: "",
       notes: "",
@@ -97,7 +126,7 @@ class NewRecipe extends Component {
     fetch('http://localhost:3001/api/v1/recipes', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        // 'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
       body: JSON.stringify(newRecipe)
@@ -123,14 +152,14 @@ class NewRecipe extends Component {
       <div>
         <UserNavBar />
         <h2 className="new-recipe-title">Add a New Recipe</h2>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <span>
             <label >
               Title:
               <input
                 type="text"
                 style={{ width: '400px', height: '30px' }}
-                name="title"
+                name="name"
                 value={this.state.title}
                 onChange={this.handleChange}
               />
@@ -212,7 +241,7 @@ class NewRecipe extends Component {
           <div>
             <label>
               Upload an Image:
-            <br />
+            {/* <br /> */}
               <input
                 type="file"
                 name="image"
@@ -222,12 +251,17 @@ class NewRecipe extends Component {
               {this.state.image ?
                 <div>
                   <br />
-                  <img src={this.state.image} alt='' style={{ height: '20%', width: '20%' }} ></img>
+                  <img
+                    src={this.state.image}
+                    alt=''
+                    style={{ height: '20%', width: '20%' }}
+                  />
                 </div> :
                 null
               }
             </label>
           </div>
+          <input type="submit" value="Save Recipe" />
         </form>
         <Link to={`/users/${this.props.userId}`}> <button>Cancel</button></Link>
         <button onClick={this.handleSave} className="save-recipe">Save Recipe</button>

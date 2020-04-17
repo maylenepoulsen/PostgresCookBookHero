@@ -1,5 +1,9 @@
 class Api::V1::RecipeSerializer < ActiveModel::Serializer
-    attributes :id, :name, :ingredients, :user, :tags, :directions, :notes, :created_at, :image
+    attributes :id, :name, :ingredients, :user, :tags, :directions, :notes, :created_at, :image_url
+
+    def image_url
+        self.object.get_image_url
+    end
     
     def ingredients
         self.object.recipe_ingredients.map do |ri|
