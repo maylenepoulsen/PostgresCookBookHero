@@ -82,13 +82,14 @@
   font-size: 15px;
 }
 
-.hidden-add-image {
-  width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+.btn {
+  border: 2px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .add-image {
@@ -101,6 +102,17 @@
   display: inline-block;
   font-size: 15px; 
 }
+
+.hidden-add-image {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+
 
 .login-button {
   background-color: #e7e7e7;

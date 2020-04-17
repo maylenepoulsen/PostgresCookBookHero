@@ -13,7 +13,7 @@ class Tags extends Component {
       <div>
         Tags:
         
-        {this.extractTags().map((tag,idx) => <p key={idx}><button  className='tag'>{tag}</button></p>)}
+        {this.extractTags().map((tag,idx) => <p key={idx}><button  className='btn'>{tag}</button></p>)}
   
       </div>
     );

@@ -231,7 +231,7 @@ class NewRecipe extends Component {
             </div>
             <div>
               {this.state.tags.map((tag, idx) => (
-                <button key={idx}>{tag}</button>
+                <button key={idx} className='btn' >{tag}</button>
               ))}
               <br />
               <label style={{ paddingRight: '10px' }}>
@@ -255,7 +255,7 @@ class NewRecipe extends Component {
                   type="file"
                   name="image"
                   accept="image/*"
-                  className="add-ingredient"
+                  className="add-image"
                   onChange={this.handleImageUpload}
                 />
                 <br />
@@ -273,7 +273,7 @@ class NewRecipe extends Component {
             </div>
             <div>
               <br />
-            <input type="submit" className='button' value="Save Recipe" />
+            <input type="submit" className='button' value="Save Recipe" style={{position: 'relative', bottom:'5px'}}/>
             </div>
           </form>
           {/* <div>
