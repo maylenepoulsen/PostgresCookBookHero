@@ -54,16 +54,17 @@ class App extends Component {
   }
 
   addANewRecipe = recipeId => {
-    console.log(recipeId)
-    // this.setState({recipeToShow: recipeId})
     fetch(`http://localhost:3001/api/v1/recipes/${recipeId}`)
     .then(response => response.json())
     .then(result => {
       this.setState({showRecipe: result})
-      //console.log(this.state.showRecipe)
-    })
-    
+    }) 
   } 
+
+  deleteRecipe = recipeId => {
+    const newRecipeArray = this.state.recipes.filter(recipe => recipe.id !== recipeId)
+    this.setState({recipes: newRecipeArray})
+  }
 
 
   render() {
@@ -109,10 +110,15 @@ class App extends Component {
           <Route exact path="/recipe/:id">
             <RecipeShow 
             showRecipe={this.state.showRecipe}
+            deleteRecipe={this.deleteRecipe}
            />
           </Route>
           <Route path="/recipes" >
-            <Recipes allRecipes={this.state.allRecipes}/>
+            <Recipes 
+            allRecipes={this.state.allRecipes}  
+            logOutUser={this.logOutUser}
+            addANewRecipe={this.addANewRecipe}
+            />
           </Route>
           <Route path="/">
             <Redirect to={`/users/${this.state.userId}`}>

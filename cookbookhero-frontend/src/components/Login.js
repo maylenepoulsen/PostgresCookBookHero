@@ -35,19 +35,21 @@ class Login extends Component {
       <div className="centered">
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label>
+            <label style={{paddingRight: '15px'}}>
               <h3 className="site-title">Enter your Username</h3>
               <input
                 onChange={this.handleChange}
                 type="text"
-                style={{ width: "400px", height: "30px", fontSize: "large" }}
+                style={{ width: "400px", height: "30px", fontSize: "large"}}
                 name="username"
                 value={this.state.username}
               />
             </label>
-            <button className="login-button" type="submit">
+            
+            <button className="login-button" type="submit" >
               Login
             </button>
+           
           </div>
         </form>
       </div>

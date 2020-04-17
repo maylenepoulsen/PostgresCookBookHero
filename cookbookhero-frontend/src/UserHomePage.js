@@ -23,16 +23,16 @@ class UserHomePage extends Component {
               className="all-recipes-title"
               style={{ position: "relative", left: "400px" }}
             >
-              All Recipes
+              All My Recipes
             </h1>
             <div style={{ position: "relative", left: "20px" }}>
               <SortDropDown recipes={this.props.recipes} />
             </div>
           </div>
-          <div style={{ position: "relative", left: "30px", top: "200px" }}>
+          <div style={{ position: "absolute", left: "30px", top: "300px" }}>
             <Tags recipes={this.props.recipes} />
           </div>
-          <div style={{ position: "relative", left: "300px", top: "-200px" }}>
+          <div style={{ position: "absolute", left: "300px", top: "200px" }}>
             <RecipeList
               recipes={this.props.recipes}
               userId={this.props.userId}
@@ -40,7 +40,7 @@ class UserHomePage extends Component {
               addANewRecipe={this.props.addANewRecipe}
             />
           </div>
-          <div style={{ position: "relative", left: "350px", top: "-100px" }}>
+          <div style={{ position: "absolute", left: "850px", top: "400px" }}>
             {this.props.recipes
               .reverse()
               .slice(0, 2)

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 class RecipeList extends Component {
   handleClick = (event) => {
     this.props.addANewRecipe(event.target.id)
-    // return <Redirect to={`/recipe/${event.target.id}`} />
+
   };
 
   render() {
