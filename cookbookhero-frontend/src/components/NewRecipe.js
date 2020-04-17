@@ -149,113 +149,116 @@ class NewRecipe extends Component {
     }
     return (
       <div>
-      <UserNavBar logOutUser={this.props.logOutUser}/>
-      <div style={{position: 'absolute', left:'30px'}}>
-       
-        <h2 className="new-recipe-title">Add a New Recipe</h2>
-        <form onSubmit={this.handleSubmit}>
-          <span>
-            <label >
-              Title:
+        <UserNavBar logOutUser={this.props.logOutUser} />
+        <div style={{ position: 'absolute', left: '30px' }}>
+
+          <h2 className="new-recipe-title">Add a New Recipe</h2>
+          <form onSubmit={this.handleSubmit}>
+            <span>
+              <label >
+                Title:
               <input
-                type="text"
-                style={{width: '450px', height: '30px', fontSize: 'large'}}
-                name="title"
-                value={this.state.title}
-                onChange={this.handleChange}
-              />
-            </label>
-          </span>
-          <span style={{paddingLeft: '20px'}}>
-            <label>
-              This recipe is from (ie. special person or blog):
-              <input
-                type="text"
-                style={{width: '250px', height: '30px', fontSize: 'large'}}
-                name="history"
-                value={this.state.history}
-                onChange={this.handleChange}
-              />
-            </label>
-          </span>
-          <div style={{paddingTop: '10px'}}>
-            <div style={{position: 'absolute', left: '50px'}}>
-            <ul>
-              {this.state.ingredients.map((ingredient, idx) => (
-                <li key={idx} style={{lineHeight:'1.5'}}>{ingredient.unit.concat(" ", ingredient.name)}</li>
-              ))}
-            </ul>
-            </div>
-            <span >
-              <label>Amount: </label>
-              <input
-                type="text"
-                name="unit"
-                style={{width: '200px', height: '30px', fontSize: 'large'}}
-                value={this.state.unit}
-                onChange={this.handleChange}
-              />
+                  type="text"
+                  style={{ width: '450px', height: '30px', fontSize: 'large' }}
+                  name="title"
+                  value={this.state.title}
+                  onChange={this.handleChange}
+                />
+              </label>
             </span>
-            <span style={{paddingLeft: '20px'}}>
-              <label>Ingredient: </label>
+            <span style={{ paddingLeft: '20px' }}>
+              <label>
+                This recipe is from (ie. special person or blog):
               <input
-                type="text"
-                name="ingredient"
-                style={{width: '200px', height: '30px', fontSize: 'large'}}
-                value={this.state.ingredient}
-                onChange={this.handleChange}
-              />
+                  type="text"
+                  style={{ width: '250px', height: '30px', fontSize: 'large' }}
+                  name="history"
+                  value={this.state.history}
+                  onChange={this.handleChange}
+                />
+              </label>
             </span>
-            <br />
-            <div style={{padding: '7px'}}>
-            <button className='add-ingredient' onClick={this.handleAddIngredient}>Add Ingredient</button>
+            <div style={{ paddingTop: '10px' }}>
+              <div style={{ position: 'absolute', left: '50px' }}>
+                <ul>
+                  {this.state.ingredients.map((ingredient, idx) => (
+                    <li key={idx} style={{ lineHeight: '1.5' }}>{ingredient.unit.concat(" ", ingredient.name)}</li>
+                  ))}
+                </ul>
+              </div>
+              <span >
+                <label>Amount: </label>
+                <input
+                  type="text"
+                  name="unit"
+                  style={{ width: '200px', height: '30px', fontSize: 'large' }}
+                  value={this.state.unit}
+                  onChange={this.handleChange}
+                />
+              </span>
+              <span style={{ paddingLeft: '20px' }}>
+                <label>Ingredient: </label>
+                <input
+                  type="text"
+                  name="ingredient"
+                  style={{ width: '200px', height: '30px', fontSize: 'large' }}
+                  value={this.state.ingredient}
+                  onChange={this.handleChange}
+                />
+              </span>
+              <br />
+              <div style={{ padding: '7px' }}>
+                <button className='add-ingredient' onClick={this.handleAddIngredient}>Add Ingredient</button>
+              </div>
             </div>
-          </div>
-          <div>
-           <h4>Directions:</h4>
+            <div>
+              <h4>Directions:</h4>
               <textarea
                 name="directions"
                 className='text-area'
                 value={this.state.directions}
                 onChange={this.handleChange}
               />
-          </div>
-          <div>
-            <h4>Add Some Notes:</h4>
-            <textarea
-              name="notes"
-              className='notes'
-              value={this.state.notes}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div>
-            {this.state.tags.map((tag, idx) => (
-              <button key={idx}>{tag}</button>
-            ))}
-            <br />
-            <label style={{paddingRight: '10px'}}>
-              Tags:
-              <input
-                type="text"
-                name="tag"
-                style={{width: '200px', height: '30px', fontSize: 'large'}}
-                value={this.state.tag}
-                onChange={this.handleChangeTag}
+            </div>
+            <div>
+              <h4>Add Some Notes:</h4>
+              <textarea
+                name="notes"
+                className='notes'
+                value={this.state.notes}
+                onChange={this.handleChange}
               />
-            </label>
-            <button className='add-ingredient' onClick={this.handleAddTag}>Add a Tag</button>
-          </div>
-          <div>
-            <label>
-              Upload an Image:
-            {/* <br /> */}
+            </div>
+            <div>
+              {this.state.tags.map((tag, idx) => (
+                <button key={idx}>{tag}</button>
+              ))}
+              <br />
+              <label style={{ paddingRight: '10px' }}>
+                Tags:
               <input
-                type="file"
-                name="image"
-                accept="image/*"
-                onChange={this.handleImageUpload}
-              />
+                  type="text"
+                  name="tag"
+                  style={{ width: '200px', height: '30px', fontSize: 'large' }}
+                  value={this.state.tag}
+                  onChange={this.handleChangeTag}
+                />
+              </label>
+              <button className='add-ingredient' onClick={this.handleAddTag}>Add a Tag</button>
+            </div>
+            <div>
+              <br />
+              <label for="image" className='button'>
+                <h4>Upload an Image:</h4>
+              </label>
+                <input
+                  type="file"
+                  name="image"
+                  accept="image/*"
+                  className="add-image"
+                  onChange={this.handleImageUpload}
+                />
+                <br />
               {this.state.image ?
                 <div>
                   <br />
@@ -267,23 +270,22 @@ class NewRecipe extends Component {
                 </div> :
                 null
               }
+            </div>
+            <input type="submit" className='button' value="Save Recipe" />
+          </form>
+          {/* <div>
+            <label>
+              <h4>Upload an Image:</h4>
+              <input type="file" onChange={this.handleImageUpload} className='add-image' />
             </label>
+          </div> */}
+          <div style={{ position: 'absolute', left: '800px', bottom: '5px' }}>
+            <Link to={`/users/${this.props.userId}`}> <button className='button'>Cancel</button></Link>
           </div>
-          <input type="submit" value="Save Recipe" />
-        </form>
-        <div>
-          <label>
-           <h4>Upload an Image:</h4> 
-            <input type="file" onChange={this.handleImageUpload} className='add-image'/>
-          </label>
+          <div style={{ position: 'absolute', left: '1000px', bottom: '5px' }}>
+            <button onClick={this.handleSave} className="button">Save Recipe</button>
+          </div>
         </div>
-        <div style={{position: 'absolute', left:'800px', bottom:'5px'}}>
-       <Link to={`/users/${this.props.userId}`}> <button className='button'>Cancel</button></Link>
-       </div>
-       <div style={{position: 'absolute', left: '1000px', bottom:'5px'}}>
-        <button onClick={this.handleSave} className="button">Save Recipe</button>
-        </div>
-      </div>
       </div>
     );
   }

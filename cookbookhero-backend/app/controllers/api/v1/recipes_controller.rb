@@ -10,9 +10,9 @@ class Api::V1::RecipesController < ApplicationController
       #   notes: string
       #   
       # 
-      byebug
+      # byebug
       user_id = params[:user_id]
-      name = params[:name]
+      name = params[:title]
       history = params[:history]
       notes = params[:notes]
       directions = params[:directions]
