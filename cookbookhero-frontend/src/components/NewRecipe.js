@@ -40,7 +40,7 @@ class NewRecipe extends Component {
     })
       .then(response => response.json())
       .then(result => {
-        console.log(result)
+        // console.log(result)
         this.setState({
           recipeId: result.id,
           redirect: true
@@ -73,7 +73,7 @@ class NewRecipe extends Component {
   };
 
   handleImageUpload = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     if (event.target.value) {
       this.setState({ image: URL.createObjectURL(event.target.files[0]) })
     } else {

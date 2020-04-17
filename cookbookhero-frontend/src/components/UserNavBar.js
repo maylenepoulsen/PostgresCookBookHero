@@ -4,7 +4,7 @@ import "../App.css";
 
 class UserNavBar extends Component {
   handleLogOut = () => {
-    console.log("logged out");
+    // console.log("logged out");
     this.props.logOutUser();
   };
 

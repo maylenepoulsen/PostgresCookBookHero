@@ -18,7 +18,7 @@ class SortDropDown extends Component {
         this.setState({
           value : event.target.value  
         })
-        console.log("SortDropDown: recipes prop",this.props.recipes)
+        // console.log("SortDropDown: recipes prop",this.props.recipes)
         const recipeArray = [...this.props.recipes]
         recipeArray.sort(sorts[event.target.value])
         this.props.sortedRecipes(recipeArray)

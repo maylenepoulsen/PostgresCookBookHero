@@ -33,13 +33,9 @@ class UserHomePage extends Component {
             >
               All My Recipes
             </h1>
-            {/* {this.props.recipes > 2 ?  */}
             <div style={{ position: "relative", left: "20px" }}>
               <SortDropDown recipes={this.props.recipes} sortedRecipes={this.handleSortedRecipes} />
             </div>
-            {/* :
-            <div></div>
-             } */}
           </div>
           <div style={{ position: "absolute", left: "30px", top: "300px" }}>
             <Tags recipes={this.props.recipes} />
