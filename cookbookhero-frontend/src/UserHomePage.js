@@ -23,13 +23,13 @@ class UserHomePage extends Component {
               className="all-recipes-title"
               style={{ position: "relative", left: "400px" }}
             >
-              All Recipes
+              All My Recipes
             </h1>
             <div style={{ position: "relative", left: "20px" }}>
               <SortDropDown recipes={this.props.recipes} />
             </div>
           </div>
-          <div style={{ position: "absolute", left: "30px", top: "100px" }}>
+          <div style={{ position: "absolute", left: "30px", top: "300px" }}>
             <Tags recipes={this.props.recipes} />
           </div>
           <div style={{ position: "absolute", left: "300px", top: "200px" }}>

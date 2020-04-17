@@ -114,7 +114,11 @@ class App extends Component {
            />
           </Route>
           <Route path="/recipes" >
-            <Recipes allRecipes={this.state.allRecipes}  logOutUser={this.logOutUser}/>
+            <Recipes 
+            allRecipes={this.state.allRecipes}  
+            logOutUser={this.logOutUser}
+            addANewRecipe={this.addANewRecipe}
+            />
           </Route>
           <Route path="/">
             <Redirect to={`/users/${this.state.userId}`}>
