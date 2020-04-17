@@ -103,13 +103,14 @@ class NewRecipe extends Component {
   render() {
     if(this.state.redirect) {
       return (
-        //this doesn't match the backend
         <Redirect to={`/recipe/${this.state.recipeId}`} />
       )
     }
     return (
       <div>
-        <UserNavBar />
+      <UserNavBar logOutUser={this.props.logOutUser}/>
+      <div style={{position: 'absolute', left:'30px'}}>
+       
         <h2 className="new-recipe-title">Add a New Recipe</h2>
         <form>
           <span>
@@ -117,66 +118,72 @@ class NewRecipe extends Component {
               Title:
               <input
                 type="text"
-                style={{width: '400px', height: '30px'}}
+                style={{width: '450px', height: '30px', fontSize: 'large'}}
                 name="title"
                 value={this.state.title}
                 onChange={this.handleChange}
               />
             </label>
           </span>
-          <span>
+          <span style={{paddingLeft: '20px'}}>
             <label>
               This recipe is from (ie. special person or blog):
               <input
                 type="text"
-                style={{width: '250px', height: '30px'}}
+                style={{width: '250px', height: '30px', fontSize: 'large'}}
                 name="history"
                 value={this.state.history}
                 onChange={this.handleChange}
               />
             </label>
           </span>
-          <div>
+          <div style={{paddingTop: '10px'}}>
+            <div style={{position: 'absolute', left: '50px'}}>
             <ul>
               {this.state.ingredients.map((ingredient, idx) => (
-                <li key={idx}>{ingredient.unit.concat(" ", ingredient.name)}</li>
+                <li key={idx} style={{lineHeight:'1.5'}}>{ingredient.unit.concat(" ", ingredient.name)}</li>
               ))}
             </ul>
-            <span>
+            </div>
+            <span >
               <label>Amount: </label>
               <input
                 type="text"
                 name="unit"
+                style={{width: '200px', height: '30px', fontSize: 'large'}}
                 value={this.state.unit}
                 onChange={this.handleChange}
               />
             </span>
-            <span>
+            <span style={{paddingLeft: '20px'}}>
               <label>Ingredient: </label>
               <input
                 type="text"
                 name="ingredient"
+                style={{width: '200px', height: '30px', fontSize: 'large'}}
                 value={this.state.ingredient}
                 onChange={this.handleChange}
               />
             </span>
             <br />
-            <button onClick={this.handleAddIngredient}>Add Ingredient</button>
+            <div style={{padding: '7px'}}>
+            <button className='add-ingredient' onClick={this.handleAddIngredient}>Add Ingredient</button>
+            </div>
           </div>
           <div>
-            <label>
-              Directions:
+           <h4>Directions:</h4>
               <textarea
                 name="directions"
+                className='text-area'
                 value={this.state.directions}
                 onChange={this.handleChange}
               />
-            </label>
           </div>
           <div>
-            Add Some Notes:
+            <h4>Add Some Notes:</h4>
             <textarea
               name="notes"
+              className='notes'
               value={this.state.notes}
               onChange={this.handleChange}
             />
@@ -186,27 +193,32 @@ class NewRecipe extends Component {
               <button key={idx}>{tag}</button>
             ))}
             <br />
-            <label>
+            <label style={{paddingRight: '10px'}}>
               Tags:
               <input
                 type="text"
                 name="tag"
+                style={{width: '200px', height: '30px', fontSize: 'large'}}
                 value={this.state.tag}
                 onChange={this.handleChangeTag}
               />
             </label>
-            <button onClick={this.handleAddTag}>Add a Tag</button>
+            <button className='add-ingredient' onClick={this.handleAddTag}>Add a Tag</button>
           </div>
         </form>
         <div>
           <label>
-            Upload an Image:
-            <br />
-            <input type="file" onChange={this.handleImageUpload} />
+           <h4>Upload an Image:</h4> 
+            <input type="file" onChange={this.handleImageUpload} className='add-image'/>
           </label>
         </div>
-       <Link to={`/users/${this.props.userId}`}> <button>Cancel</button></Link>
-        <button onClick={this.handleSave} className="save-recipe">Save Recipe</button>
+        <div style={{position: 'absolute', left:'800px', bottom:'5px'}}>
+       <Link to={`/users/${this.props.userId}`}> <button className='button'>Cancel</button></Link>
+       </div>
+       <div style={{position: 'absolute', left: '1000px', bottom:'5px'}}>
+        <button onClick={this.handleSave} className="button">Save Recipe</button>
+        </div>
+      </div>
       </div>
     );
   }
