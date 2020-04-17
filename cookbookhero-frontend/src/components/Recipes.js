@@ -6,7 +6,7 @@ class Recipes extends Component {
     if(this.props.allRecipes) {
       return (
         <div>
-          <UserNavBar />
+          <UserNavBar logOutUser={this.props.logOutUser}/>
           <h2 style={{ textAlign: "center" }}>A List of all the Recipes</h2>
           <ul>
       {this.props.allRecipes.map(recipe => <li key={recipe.id}>{recipe.name}</li>)}
