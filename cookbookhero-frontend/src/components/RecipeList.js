@@ -11,7 +11,13 @@ class RecipeList extends Component {
     return (
       <div>
         <ul>
-        {this.props.recipes.map((recipe) =><Link to={`/recipe/${recipe.id}`}> <li className='recipe-list' key={recipe.id} id={recipe.id} onClick={this.handleClick}>{recipe.name}</li></Link>)}
+          {this.props.recipes.map((recipe) =>
+            <Link key={recipe.id} to={`/recipe/${recipe.id}`}>
+              <li className='recipe-list'
+                id={recipe.id}
+                onClick={this.handleClick}>{recipe.name}</li>
+            </Link>
+          )}
         </ul>
       </div>
     );

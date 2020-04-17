@@ -14,11 +14,12 @@ class NewRecipe extends Component {
     unit: "",
     tag: "",
     tags: [],
+    image: null,
     recipeId: null,
     redirect: null
   };
 
-  
+
 
   handleChange = (event) => {
     this.setState({
@@ -34,7 +35,7 @@ class NewRecipe extends Component {
     const listIngredient = {
       unit: newAmount,
       name: newIngredient
-    } 
+    }
 
     this.setState({
       ingredients: [...this.state.ingredients, listIngredient],
@@ -42,6 +43,15 @@ class NewRecipe extends Component {
       unit: "",
     });
   };
+
+  handleImageUpload = (event) => {
+    console.log(event.target.value)
+    if (event.target.value) {
+      this.setState({ image: URL.createObjectURL(event.target.files[0]) })
+    } else {
+      this.setState({ image: null })
+    }
+  }
 
   handleChangeTag = (event) => {
     const newTag = event.target.value;
@@ -68,6 +78,7 @@ class NewRecipe extends Component {
       notes: this.state.notes,
       ingredients: this.state.ingredients,
       tags: this.state.tags,
+      image: this.state.image,
     }
 
     this.setState({
@@ -80,6 +91,7 @@ class NewRecipe extends Component {
       unit: "",
       tag: "",
       tags: [],
+      image: null
     })
 
     fetch('http://localhost:3001/api/v1/recipes', {
@@ -90,18 +102,18 @@ class NewRecipe extends Component {
       },
       body: JSON.stringify(newRecipe)
     })
-    .then(response => response.json())
-    .then(result => {
-      this.setState({
-        recipeId: result.id,
-        redirect: true
+      .then(response => response.json())
+      .then(result => {
+        this.setState({
+          recipeId: result.id,
+          redirect: true
+        })
+        this.props.addANewRecipe(result.id)
       })
-      this.props.addANewRecipe(result.id)
-    })
   }
 
   render() {
-    if(this.state.redirect) {
+    if (this.state.redirect) {
       return (
         //this doesn't match the backend
         <Redirect to={`/recipe/${this.state.recipeId}`} />
@@ -117,7 +129,7 @@ class NewRecipe extends Component {
               Title:
               <input
                 type="text"
-                style={{width: '400px', height: '30px'}}
+                style={{ width: '400px', height: '30px' }}
                 name="title"
                 value={this.state.title}
                 onChange={this.handleChange}
@@ -129,7 +141,7 @@ class NewRecipe extends Component {
               This recipe is from (ie. special person or blog):
               <input
                 type="text"
-                style={{width: '250px', height: '30px'}}
+                style={{ width: '250px', height: '30px' }}
                 name="history"
                 value={this.state.history}
                 onChange={this.handleChange}
@@ -197,15 +209,27 @@ class NewRecipe extends Component {
             </label>
             <button onClick={this.handleAddTag}>Add a Tag</button>
           </div>
-        </form>
-        <div>
-          <label>
-            Upload an Image:
+          <div>
+            <label>
+              Upload an Image:
             <br />
-            <input type="file" onChange={this.handleImageUpload} />
-          </label>
-        </div>
-       <Link to={`/users/${this.props.userId}`}> <button>Cancel</button></Link>
+              <input
+                type="file"
+                name="image"
+                accept="image/*"
+                onChange={this.handleImageUpload}
+              />
+              {this.state.image ?
+                <div>
+                  <br />
+                  <img src={this.state.image} alt='' style={{ height: '20%', width: '20%' }} ></img>
+                </div> :
+                null
+              }
+            </label>
+          </div>
+        </form>
+        <Link to={`/users/${this.props.userId}`}> <button>Cancel</button></Link>
         <button onClick={this.handleSave} className="save-recipe">Save Recipe</button>
       </div>
     );

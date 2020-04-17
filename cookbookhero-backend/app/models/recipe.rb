@@ -4,6 +4,7 @@ class Recipe < ApplicationRecord
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
   has_many :notes
+  has_one_attached :image
 
   def add_ingredient(ingredient)
     new_ingredient = Ingredient.find_by(name: ingredient[:name].singularize.downcase)

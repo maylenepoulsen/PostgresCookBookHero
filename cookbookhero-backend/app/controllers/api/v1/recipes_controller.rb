@@ -15,6 +15,7 @@ class Api::V1::RecipesController < ApplicationController
       history = params[:history]
       notes = params[:notes]
       directions = params[:directions]
+      image = params[:image]
       new_recipe = Recipe.new(user_id: user_id, name: name, history: history, description: directions)
       new_recipe.notes << Note.create(information: notes, recipe: new_recipe)
       # create ingredients which need to be created
@@ -24,6 +25,8 @@ class Api::V1::RecipesController < ApplicationController
       # associate tags
       new_recipe.add_tags(params[:tags])
       # self.params
+      new_recipe.save
+      new_recipe.image.attach(params[:image])
       new_recipe.save
 
       render json: new_recipe, serialize: Api::V1::RecipeSerializer
