@@ -248,14 +248,14 @@ class NewRecipe extends Component {
             </div>
             <div>
               <br />
-              <label htmlFor="image" className='button'>
+              <label >
                 <h4>Upload an Image:</h4>
               </label>
                 <input
                   type="file"
                   name="image"
                   accept="image/*"
-                  className="add-image"
+                  className="add-ingredient"
                   onChange={this.handleImageUpload}
                 />
                 <br />
@@ -271,7 +271,10 @@ class NewRecipe extends Component {
                 null
               }
             </div>
+            <div>
+              <br />
             <input type="submit" className='button' value="Save Recipe" />
+            </div>
           </form>
           {/* <div>
             <label>
@@ -281,9 +284,6 @@ class NewRecipe extends Component {
           </div> */}
           <div style={{ position: 'absolute', left: '800px', bottom: '5px' }}>
             <Link to={`/users/${this.props.userId}`}> <button className='button'>Cancel</button></Link>
-          </div>
-          <div style={{ position: 'absolute', left: '1000px', bottom: '5px' }}>
-            <button onClick={this.handleSave} className="button">Save Recipe</button>
           </div>
         </div>
       </div>
